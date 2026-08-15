@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AutoTest tool</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/primatec logo.png') }}" alt="Logo">
+        </div>
+    </header>
+ 
+    <main>
+        <div>
+            <div class="tout">
+                <div>
+                    <div class="IPersonnel">
+                        <form action="{{ url_for('login') }}" method="POST">
+                            <input required id="txt" type="text" name="username" placeholder="Username" class="donner">
+                            <br>
+                            <input required id="mot-de-passe" type="password" name="password" placeholder="Password" class="donner">
+                            <br>
+                            <input type="submit" value="Log in" class="submit">
+                        </form>
+                        
+                        {% if error %}
+                            <p class="input-error">{{ error }}</p>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

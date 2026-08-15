@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTest tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/primatec logo.png') }}" alt="Logo">
+
+        </div>
+    </header>
+    <div class="container">
+        
+        <div class="login-box">
+            <div class="Heading">
+             <h1>Welcome to <span>AutoTest tool</span></h1>
+             <p>Your Complete Solution for Vehicle Testing and Diagnostics</p>
+            </div>
+            <a href="{{ url_for('login') }}">
+
+            <button class="button" >
+                Login
+                <div class="hoverEffect">
+                  <div></div>
+                </div>
+            </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

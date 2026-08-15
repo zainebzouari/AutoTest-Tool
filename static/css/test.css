@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; 
+    background-image: url("https://api.wallpapers.ai/static/downloads/9191d50f18264d1480ab79466a277ee5/upscaled/000000_544161612_kdpmpp2m15_PS7.5_Blue_BMW_M5._digital_art_concept_art_[upscaled].jpg"); /* Chemin de votre image */
+    background-size: cover; 
+    background-position:center; 
+    background-repeat: no-repeat; 
+    background-color: transparent;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit; 
+    background-size: inherit; 
+    background-position: inherit; 
+    background-repeat: inherit; 
+    filter: blur(0.9px); 
+    z-index: -1; 
+}
+header {
+    width: 100%;
+    height: 8vh;
+    background: transparent;
+}
+
+.logo img {
+    width: 178px; 
+    height: auto;
+}
+.home-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.home-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 60px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.heading {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.heading h1 {
+    color: #007BFF; 
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.heading p {
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.search-box > div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+}
+
+.input {
+    grid-column: span 3;
+    border: 2px solid gray;
+    border-radius: 30px;
+    outline: none;
+    padding: 16px 26px;
+    box-shadow: inset 0 2px 4px 0 #555;
+}
+
+.input::placeholder {
+    opacity: 0.6;
+}
+
+.input-border-error {
+    border: 2px solid rgba(255, 0, 0, 0.567);
+}
+
+.input-error {
+    color: red;
+    font-size: 12px;
+    margin: 0;
+}
+
+button {
+    background-color: #007BFF; /* Bleu */
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    color: #007BFF;
+    background-color: #fff;
+    border: 1px solid #007BFF;
+}
+
+.results {
+    overflow: hidden;
+    animation: fadeIn 1.125s ease;
+    height: auto;
+}
+
+.result-success {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: auto;
+}
+
+.product-details {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.product-details > p {
+    margin: 0;
+    color: #007BFF; /* Bleu */
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.product-details > p > span {
+    font-weight: 500;
+    color: gray;
+}
+
+.product-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-image > img {
+    width: 7rem;
+    height: 7.5rem;
+    border-radius: 30px;
+}
+
+
+
+.get-results-button {
+    background-color: #28a745; 
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    margin: 20px 0 0 auto; 
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.get-results-button:hover {
+    background-color: #218838; 
+}
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #007BFF; 
+    border-radius:50%;
+    animation: spin 1s linear infinite;
+    z-index: 9999; 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    0% {
+        display: none;
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        height: 162px;
+        opacity: 1;
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(20px);
+    }
+}
+
+label[for="select-all"] {
+    font-weight: bold;
+}
+
+.result-failed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 162px;
+  }
+  
+  .result-failed > img {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .result-failed > p {
+    color: grey;
+    margin-top: 10px; 
+  }
+  
+

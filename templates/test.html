@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTest tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/primatec logo.png') }}" alt="Logo">
+        </div>
+    </header>
+    <div class="home-container">
+        <div class="search-box">
+            <form method="post">
+                <div>
+                    <input
+                        type="text"
+                        id="vehicle_id"
+                        name="vehicle_id"
+                        class="input"
+                        placeholder="Search vehicle by ID..."
+                        value="{{ request.form['vehicle_id'] if request.form else '' }}"
+                        autofocus
+                    />
+                    <button type="submit">
+                        <span class="material-symbols-outlined">arrow_forward_ios</span>
+                    </button>
+                </div>
+
+                {% if message == "No vehicle found with the provided ID." %}
+                  <div class="result-failed">
+                    <img src="{{ url_for('static', filename='img/caution.gif') }}" alt="Caution">
+                    <p>{{ message }}</p>
+                  </div>
+                {% endif %}
+            
+                <br>
+
+                {% if vehicle_data %}
+                   <div class="results">
+                      <div class="result-success">
+                          <div>
+                              <input type="checkbox" id="select-all" onclick="toggleCheckboxes(this)">
+                              <label for="select-all">Select All</label>
+                          </div>
+                          {% for attribute, fields in metadata.items() %}
+                             <div>
+                               <input type="checkbox" id="{{ attribute }}" name="fields" value="{{ attribute }}" class="field-checkbox">
+                               <label for="{{ attribute }}">{{ attribute }}</label>
+                             </div>
+                          {% endfor %}
+                          <br>
+                          <input type="submit" value="Get Results" class="get-results-button">
+                      </div>
+                   </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <div id="spinner" class="spinner" style="display: none;"></div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            document.getElementById('spinner').style.display = 'block';
+        });
+
+        function toggleCheckboxes(source) {
+            checkboxes = document.getElementsByClassName('field-checkbox');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

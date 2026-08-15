@@ -31,7 +31,7 @@ Engine · Energy consumption · Climate control · ADAS · ABS system
 - **Backend:** Python, Flask
 - **Testing:** pytest, pytest-html, Allure
 - **Database:** MySQL
-- **Frontend:** HTML, CSS, React 
+- **Frontend:** HTML, CSS, (React referenced in the original internship report)
 - **CI/CD:** Jenkins
 
 ## Project structure
@@ -112,9 +112,12 @@ Test expectations (thresholds, tolerance ranges, custom checks) are defined per 
 
 ## Continuous Integration
 
-A Jenkins pipeline can be configured to: clone the repo → install dependencies → run pytest →
-archive HTML/Allure reports on every commit. See the internship report for the pipeline script
-used during development.
+A `Jenkinsfile` is included at the project root. It defines a pipeline that: clones the repo →
+installs dependencies → runs pytest → archives the JUnit/HTML/Allure reports.
+
+To use it, create a new **Pipeline** job in Jenkins and point it at this repository with
+"Pipeline script from SCM" — Jenkins will pick up the `Jenkinsfile` automatically on every
+commit/build trigger you configure.
 
 ## Notes / known limitations
 
